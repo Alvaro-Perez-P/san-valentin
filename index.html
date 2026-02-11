@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>¿Quieres ser mi San Valentín?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Segoe UI", sans-serif;
+      }
+      .card {
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      .btn-si {
+        transition: all 0.4s ease;
+      }
+      .img-galeria {
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 15px;
+      }
+      .text-danger {
+        color: #ff4d6d;
+      }
+    </style>
+  </head>
+  <audio id="musica" loop autoplay>
+    <source
+      src="Salistre - Mi Varadero (Video Oficial) [C-B5yJBJFqo].mp3"
+      type="audio/mpeg"
+    />
+  </audio>
+
+  <script>
+    const musica = document.getElementById("musica");
+    musica.volume = 0.0; // inicio en 0 para fade in
+
+    window.addEventListener("load", () => {
+      const playPromise = musica.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          document.addEventListener(
+            "click",
+            () => { musica.play(); },
+            { once: true },
+          );
+        });
+      }
+
+      // Fade in de la música al cargar
+      let vol = 0;
+      const fade = setInterval(() => {
+        if (vol < 0.3) {
+          vol += 0.01;
+          musica.volume = vol;
+        } else {
+          clearInterval(fade);
+        }
+      }, 50);
+    });
+  </script>
+  <body>
+    <div class="container">
+      <div class="card p-4 text-center">
+        <h1 class="mb-4">❤️ Tengo un plan que ofrecerte ❤️</h1>
+
+        <!-- Navegación -->
+        <ul class="nav nav-pills justify-content-center mb-4" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-inicio-tab" data-bs-toggle="pill" data-bs-target="#pills-inicio" type="button">Inicio</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-vales-tab" data-bs-toggle="pill" data-bs-target="#pills-vales" type="button">Vales</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-imagenes-tab" data-bs-toggle="pill" data-bs-target="#pills-imagenes" type="button">Imágenes</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-historia-tab" data-bs-toggle="pill" data-bs-target="#pills-historia" type="button">Historia</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-pregunta-tab" data-bs-toggle="pill" data-bs-target="#pills-pregunta" type="button">Pregunta</button>
+          </li>
+        </ul>
+
+        <!-- Contenido -->
+        <div class="tab-content" id="pills-tabContent">
+          <!-- Inicio -->
+          <div class="tab-pane fade show active" id="pills-inicio">
+            <p class="fs-5">Esta página es solo para ti. Navega por los apartados ❤️</p>
+          </div>
+
+          <!-- Vales -->
+          <div class="tab-pane fade" id="pills-vales">
+            <h3>Vales de Amor 💌</h3>
+            <div class="row g-3 mt-3">
+              <div class="col-md-6">
+                <button class="btn btn-outline-danger w-100" onclick="alert('¡Vale por un abrazo gigante activado! 😘')">Abrazo gigante</button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-outline-danger w-100" onclick="alert('¡Vale por una cena hecha por mí activado! 🍝')">Cena especial</button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-outline-danger w-100" onclick="alert('¡Vale por ver una película juntos activado! 🎬')">Película juntos</button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-outline-danger w-100" onclick="alert('¡Vale por un masaje activado! 💆‍♀️')">Masaje</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imágenes -->
+          <div class="tab-pane fade" id="pills-imagenes">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="img/WhatsApp Image 2026-02-11 at 22.51.35 (1).jpeg" class="d-block w-100 img-galeria" alt="img1" />
+                </div>
+                <!-- ... otras imágenes ... -->
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Historia -->
+        <div class="tab-pane" id="pills-historia">
+  <div id="historia-texto" class="fs-5 mb-3"></div>
+  <button id="btnSiguiente" class="btn btn-danger">Siguiente ❤️</button>
+</div>
+          <!-- Pregunta -->
+          <div class="tab-pane fade" id="pills-pregunta">
+            <h2 class="mb-4">¿Quieres ir conmigo a cenar este 14 de febrero y recibir tu regalo? 💝</h2>
+            <div class="row justify-content-center" id="contenedor-botones">
+              <div class="col-6" id="col-si">
+                <button class="btn btn-success w-100 btn-si" id="btnSi">Sí 💖</button>
+              </div>
+              <div class="col-6" id="col-no">
+                <button class="btn btn-danger w-100" id="btnNo">No 😢</button>
+              </div>
+            </div>
+            <div id="mensaje" class="mt-4 fs-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Botones Pregunta
+      const btnNo = document.getElementById("btnNo");
+      const btnSi = document.getElementById("btnSi");
+      const colSi = document.getElementById("col-si");
+      const colNo = document.getElementById("col-no");
+      const mensaje = document.getElementById("mensaje");
+
+      btnNo.addEventListener("click", () => {
+        colNo.remove();
+        colSi.classList.remove("col-6");
+        colSi.classList.add("col-12");
+      });
+
+      btnSi.addEventListener("click", () => {
+        mensaje.innerHTML = "💘 ¡Sabía que dirías que sí! Te amo 💘";
+      });
+
+      // Historia con máquina de escribir y palabras resaltadas
+const contenedor = document.getElementById("historia-texto");
+const btnSiguiente = document.getElementById("btnSiguiente");
+
+const historiaPartes = [
+  "Llegaste tú para desordenarme la vida y ponerla patas arriba con tu locura y tu manera de ser,",
+  "Y para ordenármela de nuevo con uno de esos <span class='text-danger fw-bold'>abrazos</span> que recomponen el <span class='text-danger fw-bold'>corazón</span>.",
+  "Esta página la hice para ti, no solo pensando en el día de hoy,",
+  "Sino como un libro donde guardar la vida que nos queda por delante.",
+  "Solo me falta una cosa de ti:",
+  "Que me acompañes en esta historia",
+  "Que apenas acaba de comenzar ❤️ 💖"
+];
+
+let indexHistoria = 0;
+
+btnSiguiente.addEventListener("click", () => {
+  if (indexHistoria < historiaPartes.length) {
+    // Añade la siguiente parte de la historia
+    contenedor.innerHTML += `<p>${historiaPartes[indexHistoria]}</p>`;
+    indexHistoria++;
+  } 
+
+  // Si llega al final, oculta el botón
+  if (indexHistoria === historiaPartes.length) {
+    btnSiguiente.style.display = "none";
+  }
+});
+
+// Limpiar la historia y reiniciar cuando se abra la pestaña
+const historiaTab = document.getElementById("pills-historia");
+historiaTab.addEventListener("shown.bs.tab", () => {
+  contenedor.innerHTML = "";
+  indexHistoria = 0;
+  btnSiguiente.style.display = "inline-block";
+});
+
+    </script>
+  </body>
+</html>
